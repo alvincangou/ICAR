@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom'
 import { BrowserRouter, Route, Link , Switch,Router} from 'react-router-dom';
 
 
-import logo from './logo.svg';
+
 
 import icon2 from './icon2.png';
 
-import CustomerView from './Components/CustomerView';
 
-import FreelancerView from './Components/FreelancerView';
-
-import NavBar from './Components/Navbar';
 
 import './App.css';
 
@@ -20,6 +17,7 @@ class Login extends Component {
         post: '',
         login: '',
         password: '',
+        redirect: null,
         responseToPost: '',
     };
 
@@ -28,12 +26,30 @@ class Login extends Component {
     }
 
     handleSubmit = async e => {
-//TODO handle submit login
+        e.preventDefault();
+        const response = await fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ login: this.state.login, password: this.state.password }),
+        });
+        const body = await response.text();
+
+        this.setState({ responseToPost: body });
+        console.log(body);
+
+        if (body){
+            this.setState({ redirect: "/home" });
+        }
     };
 
 
 
     render() {
+        if (this.state.redirect) {
+            return <Redirect to={this.state.redirect} />
+        }
         return (
 
             <div className="Login">

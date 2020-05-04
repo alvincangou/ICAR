@@ -1,56 +1,38 @@
 exports.login = function(req, res){
     var message = '';
-    var sess = req.session;
+
 
     if(req.method == "POST"){
         var post  = req.body;
-        var name= post.user_name;
-        var pass= post.password;
+        var login= post.login;
+        var password= post.password;
 
-        var sql="SELECT id, first_name, last_name, user_name FROM `users` WHERE `user_name`='"+name+"' and password = '"+pass+"'";
+        var sql="SELECT id, full_name, created_at, country_code, ordersid, freelancersid, login FROM `users` WHERE `login`='"+login+"' and password = '"+password+"'";
         db.query(sql, function(err, results){
+            if (err) throw err;
             if(results.length){
                 req.session.userId = results[0].id;
                 req.session.user = results[0];
                 console.log(results[0].id);
-                res.redirect('/home/');
+                res.send(`${req.session.userId}`,);
             }
             else{
                 message = 'Wrong Credentials.';
-                res.render('index.ejs',{message: message});
+                res.send(message);
             }
 
         });
     } else {
-        res.render('index.ejs',{message: message});
+        res.send(message);
     }
 };
 
 
 exports.logout = function(req, res){
-    var message = '';
-    var sess = req.session;
 
-    if(req.method == "POST"){
-        var post  = req.body;
-        var name= post.user_name;
-        var pass= post.password;
 
-        var sql="SELECT id, first_name, last_name, user_name FROM `users` WHERE `user_name`='"+name+"' and password = '"+pass+"'";
-        db.query(sql, function(err, results){
-            if(results.length){
-                req.session.userId = results[0].id;
-                req.session.user = results[0];
-                console.log(results[0].id);
-                res.redirect('/home/');
-            }
-            else{
-                message = 'Wrong Credentials.';
-                res.render('index.ejs',{message: message});
-            }
+    req.session.destroy(function(err) {
 
-        });
-    } else {
-        res.render('index.ejs',{message: message});
-    }
+    })
+    res.redirect('/login');
 };
