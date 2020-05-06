@@ -7,7 +7,7 @@ exports.login = function(req, res){
         var login= post.login;
         var password= post.password;
 
-        var sql="SELECT id, full_name, created_at, country_code, ordersid, freelancersid, login FROM `users` WHERE `login`='"+login+"' and password = '"+password+"'";
+        var sql="SELECT id, full_name, created_at, country_code, freelancersid, login FROM `users` WHERE `login`='"+login+"' and password = '"+password+"'";
         db.query(sql, function(err, results){
             if (err) throw err;
             if(results.length){
@@ -32,7 +32,7 @@ exports.logout = function(req, res){
 
 
     req.session.destroy(function(err) {
-
+console.log("redirect login")
     })
     res.redirect('/login');
 };

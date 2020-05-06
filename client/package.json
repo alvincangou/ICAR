@@ -2,7 +2,7 @@
   "name": "create-react-app-express",
   "version": "0.1.0",
   "license": "MIT",
-  "dependencies": {
+    "dependencies": {
     "bootstrap": "^4.4.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -16,7 +16,6 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:5000/",
   "browserslist": [
     ">0.2%",
     "not dead",
