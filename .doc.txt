@@ -1,3 +1,11 @@
 https://github.com/esausilva/example-create-react-app-express
 
 https://www.freecodecamp.org/news/how-to-make-create-react-app-work-with-a-node-backend-api-7c5c48acb1b0/
+
+
+To start the server and client at the same time (from the root of the project)
+
+yarn dev
+Running the production build on localhost. This will create a production build, then Node will serve the app on http://localhost:5000
+
+NODE_ENV=production yarn dev:server

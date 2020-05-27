@@ -2,6 +2,12 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 
+const FreelanceModel = require('./models/freelance')
+const Sequelize = require('sequelize')
+
+const Freelance = FreelanceModel(sequelize, Sequelize)
+
+
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -34,6 +40,11 @@ app.use(session({
 // API calls
 app.get('/api/hello', (req, res) => {
     res.send({express: 'Hello From Express'});
+});
+
+app.get('/api/allfreelances', (req, res) => {
+
+    res.send({express: 'Retourne toute les freelances'});
 });
 
 app.post('/api/world', (req, res) => {
