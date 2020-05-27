@@ -53,15 +53,15 @@ class Home extends Component {
     render() {
         return (
             <div className="App">
-                <header className="App-header">
-                    {/*<img src={logo} className="App-logo" alt="logo" />*/}
+{/*                <header className="App-header">
+                    <img src={logo} className="App-logo" alt="logo" />
                     <img src={icon} className="App-icon" alt="logo" />
                     <p>
                         I-CAR
                     </p>
 
 
-                </header>
+                </header>*/}
 
                 <BrowserRouter>
                     <NavBar/>

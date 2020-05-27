@@ -21,7 +21,7 @@ const Example = (props) => {
 
     return (
         <div>
-            <Navbar color="light" light expand="md">
+            <Navbar color="white" light expand="md" className="navbar-style">
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>

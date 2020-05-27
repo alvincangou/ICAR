@@ -1,6 +1,7 @@
 .App {
   text-align: center;
-
+  background-color: #F2F3F5 !important;
+  height: 100vh;
 }
 
 .App-logo {
@@ -65,4 +66,9 @@
 
 .Login-input{
   border-style: solid;
+}
+
+.navbar-style{
+  box-shadow: 10px 0px 5px grey;
+  margin-bottom: 3em;
 }
